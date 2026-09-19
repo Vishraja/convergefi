@@ -134,5 +134,5 @@ function render(){
  if(r.startsWith('action/')){actionPage();return;}
  login();
 }
-window.addEventListener('hashchange',render);
-render();
+window.addEventListener('hashchange',function(){try{render();}catch(e){console.error(e);}});
+try{render();}catch(e){console.error(e);}
