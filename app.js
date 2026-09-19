@@ -122,7 +122,10 @@ function actionPage(){
  document.getElementById('app').innerHTML=top(role==='station1'?'Underwriting':'Closing',role==='station1'?'Station 1':'Station 2')+'<main><a class="back" href="#'+role+'">← Back</a><section class="section"><div class="sectionhead"><div><div class="eyebrow">REVIEW FINDING</div><h2>'+name+'</h2><p>Record a reviewer disposition here. The demo does not fabricate evidence or automatically turn review into a pass.</p></div><span class="status wait"><i></i>Open</span></div><div class="notice"><b>Production behavior:</b> an override or exception would capture rationale, reviewer identity and timestamp in the audit trail.</div></section></main>';
 }
 function render(){
+ var path=(location.pathname||'').toLowerCase();
  var r=location.hash.replace('#','');
+ if(path.endsWith('/station1.html') && !location.hash){role='station1';queue();return;}
+ if(path.endsWith('/station2.html') && !location.hash){role='station2';queue();return;}
  if(!r||r==='login'){login();return;}
  if(r==='station1'){role='station1';queue();return;}
  if(r==='station2'){role='station2';queue();return;}
